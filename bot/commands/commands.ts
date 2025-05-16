@@ -1,12 +1,12 @@
-import type TelegramBot from 'node-telegram-bot-api';
 import {handleCurrency} from './currency';
 import {handleHistory} from './history';
 import {handleSummary} from './summary';
 import {handleClear} from './clear';
+import type {TelegramMessage} from '@/types/telegram';
 
 interface Command {
   cmd: string;
-  handle: (cmd: TelegramBot.Message, args?: string[]) => Promise<void>;
+  handle: (cmd: TelegramMessage, args?: string[]) => Promise<void>;
   description: string;
 }
 
