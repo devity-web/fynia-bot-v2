@@ -32,5 +32,5 @@ export const handleCallback = async (callback: TelegramCallback) => {
     );
   }
 
-  sendMessage(chatId, `⚙️ Moeda alterada para ${data.toUpperCase()}`);
+  await sendMessage(chatId, `⚙️ Moeda alterada para ${data.toUpperCase()}`);
 };

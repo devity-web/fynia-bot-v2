@@ -46,7 +46,7 @@ export const handleSummary = async (msg: TelegramMessage) => {
     )
     .join('\n');
 
-  sendMessage(
+  await sendMessage(
     msg.chat.id,
     `💸 Esse é o seu resumo de gastos.
     \n\n🗓️ ${format(start, config.DATE_FORMAT)} até ${format(end, config.DATE_FORMAT)}

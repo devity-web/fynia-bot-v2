@@ -45,7 +45,7 @@ export const handleHistory = async (msg: TelegramMessage, args?: string[]) => {
     )
     .join('\n\n');
 
-  sendMessage(
+  await sendMessage(
     msg.chat.id,
     `💰 Seu histórico de gastos:
       \n\n🗓️ ${format(start, config.DATE_FORMAT)} até ${format(end, config.DATE_FORMAT)}

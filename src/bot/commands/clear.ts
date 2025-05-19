@@ -16,5 +16,5 @@ export const handleClear = async (msg: TelegramMessage) => {
     },
   });
 
-  sendMessage(msg.chat.id, '🗑️ Your month expenses were cleared.');
+  await sendMessage(msg.chat.id, '🗑️ Your month expenses were cleared.');
 };

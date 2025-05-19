@@ -29,7 +29,7 @@ export const handleDefault = async (msg: TelegramMessage) => {
     chatId: msg.chat.id,
   });
 
-  sendMessage(
+  await sendMessage(
     msg.chat.id,
     `💸 Seu gasto foi registrado com sucesso.
         \n\n${categoryAndValue.description}\n💰 ${chat.moneyFormat.format(categoryAndValue.value)}\n${category.emoji} ${category.name}

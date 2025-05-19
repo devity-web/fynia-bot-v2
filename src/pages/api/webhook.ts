@@ -15,6 +15,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>,
 ) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({message: 'Method not allowed'});
+  }
+
   const body = req.body as WebhookBody;
   const msg = body.message;
 
