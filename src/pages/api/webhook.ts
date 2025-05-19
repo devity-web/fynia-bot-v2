@@ -2,6 +2,7 @@ import {handleCallback} from '@/bot/callback';
 import {commands} from '@/bot/commands/commands';
 import {handleDefault} from '@/bot/commands/default';
 import {mongoConnect} from '@/bot/models/mongo';
+import {logger} from '@/bot/utils/logger';
 import type {WebhookBody} from '@/types/telegram';
 import type {NextApiRequest, NextApiResponse} from 'next';
 
@@ -15,6 +16,9 @@ export default async function handler(
 ) {
   const body = req.body as WebhookBody;
   const msg = body.message;
+
+  logger.info('Received message from webhook');
+  logger.info(JSON.stringify(body));
 
   await mongoConnect();
 
