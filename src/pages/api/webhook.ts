@@ -46,7 +46,7 @@ export default async function handler(
     return res.status(200).json({message: 'ok'});
   } catch (error) {
     logger.error(error);
-    sendMessage(
+    await sendMessage(
       msg.chat.id,
       'An error occurred while processing your request. Please try again later.',
     );
