@@ -1,11 +1,11 @@
+import type {TelegramMessage} from '@/types/telegram';
 import {endOfMonth, format, startOfMonth} from 'date-fns';
 import {categoryModel} from '../models/category';
 import {expenseModel} from '../models/expense';
+import {sendMessage} from '../send';
 import {getChat} from '../use-case/get-chat';
 import {getMonth} from '../use-case/get-month';
 import {config} from '../utils/env';
-import type {TelegramMessage} from '@/types/telegram';
-import {sendMessage} from '../send';
 
 export const handleSummary = async (msg: TelegramMessage) => {
   const chat = await getChat(msg.chat.id);
@@ -46,11 +46,13 @@ export const handleSummary = async (msg: TelegramMessage) => {
     )
     .join('\n');
 
+  const left = chat.chat.income - total;
+
   await sendMessage(
     msg.chat.id,
     `💸 Esse é o seu resumo de gastos.
     \n\n🗓️ ${format(start, config.DATE_FORMAT)} até ${format(end, config.DATE_FORMAT)}
-    \n💰${chat.moneyFormat.format(total)}\n\n${summary}
+    \n💰${chat.moneyFormat.format(total)}\n🚨${chat.moneyFormat.format(left)}\n\n${summary}
     `,
   );
 };
