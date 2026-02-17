@@ -1,8 +1,8 @@
 import {
   type HydratedDocument,
   type InferSchemaType,
-  model,
   Schema,
+  model,
 } from 'mongoose';
 
 const chatSchema = new Schema(
@@ -14,6 +14,10 @@ const chatSchema = new Schema(
     currency: {
       type: String,
       default: 'EUR',
+    },
+    income: {
+      type: Number,
+      default: 0,
     },
   },
   {timestamps: true},

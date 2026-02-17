@@ -1,8 +1,9 @@
+import type {TelegramMessage} from '@/types/telegram';
+import {handleClear} from './clear';
 import {handleCurrency} from './currency';
 import {handleHistory} from './history';
+import {handleIncome} from './income';
 import {handleSummary} from './summary';
-import {handleClear} from './clear';
-import type {TelegramMessage} from '@/types/telegram';
 
 interface Command {
   cmd: string;
@@ -30,5 +31,10 @@ export const commands: Command[] = [
     cmd: 'clear',
     handle: handleClear,
     description: 'Clear your month expenses',
+  },
+  {
+    cmd: 'income',
+    handle: handleIncome,
+    description: 'Set your current income',
   },
 ];
