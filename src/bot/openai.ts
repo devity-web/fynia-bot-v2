@@ -27,6 +27,7 @@ export const getCategoryAndValue = async (
         content: `Você é um agente de organização financeira.
                   Vou te enviar um texto com uma breve descrição de um gasto junto com o valor em EUROS.
                   Sua tarefa é classificar dentro da categoria que mais faz sentido, se não souber, escolha a opção "Outros".
+                  Para combustiveis e carregamentos de carros eletricos, classifique como "Transporte".
                   As possiveis categorias são:
                   - Assinaturas
                   - Contas
@@ -36,6 +37,7 @@ export const getCategoryAndValue = async (
                   - Lazer
                   - PETs
                   - Restaurantes e Delivery
+                  - Transporte
                   - Outros
                   Responder no seguinte formato:
                   Formatar a descrição em uma frase curta capitalizando.
