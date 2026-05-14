@@ -2,8 +2,8 @@ import type {TelegramMessage} from '@/types/telegram';
 import {categoryModel} from '../models/category';
 import {expenseModel} from '../models/expense';
 import {getCategoryAndValue} from '../openai';
-import {getChat} from '../use-case/get-chat';
 import {sendMessage} from '../send';
+import {getChat} from '../use-case/get-chat';
 
 export const handleDefault = async (msg: TelegramMessage) => {
   const chat = await getChat(msg.chat.id);
@@ -24,7 +24,9 @@ export const handleDefault = async (msg: TelegramMessage) => {
 
   await expenseModel.create({
     value: categoryAndValue.value,
-    category,
+    category: {
+      _id: category._id,
+    },
     description: categoryAndValue.description,
     chatId: msg.chat.id,
   });
